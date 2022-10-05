@@ -1,7 +1,7 @@
-import { APP_NAME } from '@/constants';
-import { AppBar } from '@/components/AppBar';
-import { Helmet } from 'react-helmet';
-import { PropsWithChildren, ReactElement, ReactNode } from 'react';
+import { APP_NAME } from '@/constants'
+import { AppBar } from '@/components/AppBar'
+import { Helmet } from 'react-helmet'
+import { PropsWithChildren, ReactElement, ReactNode } from 'react'
 
 interface PageProps {
   appBar?: ReactNode
@@ -14,7 +14,7 @@ export function Page(props: PropsWithChildren<PageProps>): ReactElement {
   return (
     <div
       data-testid="page"
-      className="tw-w-screen tw-min-h-screen tw-flex tw-flex-col"
+      className="tw-flex tw-min-h-screen tw-w-screen tw-flex-col"
     >
       {title && (
         <Helmet>
@@ -23,7 +23,7 @@ export function Page(props: PropsWithChildren<PageProps>): ReactElement {
       )}
       <div data-testid="page-app-bar">{appBar}</div>
       <div data-testid="page-contents" className="tw-flex-grow tw-py-4">
-        <div className={`tw-max-w-screen-xl tw-w-full tw-mx-auto`}>
+        <div className={`tw-mx-auto tw-w-full tw-max-w-screen-xl`}>
           {props.children}
         </div>
       </div>

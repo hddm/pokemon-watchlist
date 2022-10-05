@@ -1,0 +1,6 @@
+.prettierignore
+.gitignore
+.turbo
+coverage
+dist
+node_modules

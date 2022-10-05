@@ -1,0 +1,12 @@
+schema: https://graphqlpokemon.favware.tech/
+documents: './src/graphql/api/*.ts'
+generates:
+  'src/graphql/generated.tsx':
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+    config:
+      preResolveTypes: true
+      skipTypename: true
+      skipTypeNameForRoot: true
