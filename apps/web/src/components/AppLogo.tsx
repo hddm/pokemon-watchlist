@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export function AppLogo() {
+export default function AppLogo() {
   return (
     <div
       data-testid="app-logo"

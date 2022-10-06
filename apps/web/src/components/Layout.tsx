@@ -1,5 +1,5 @@
+import AppBar from '@/components/AppBar'
 import { APP_NAME } from '@/constants'
-import { AppBar } from '@/components/AppBar'
 import { Helmet } from 'react-helmet'
 import { PropsWithChildren, ReactElement, ReactNode } from 'react'
 
@@ -8,7 +8,9 @@ interface PageProps {
   title?: string
 }
 
-export function Page(props: PropsWithChildren<PageProps>): ReactElement {
+export default function Layout(
+  props: PropsWithChildren<PageProps>,
+): ReactElement {
   const { appBar = <AppBar />, title } = props
 
   return (

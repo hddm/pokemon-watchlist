@@ -1,6 +1,6 @@
-import { AppLogo } from '@/components/AppLogo'
+import AppLogo from '@/components/AppLogo'
 
-export function AppBar() {
+export default function AppBar() {
   return (
     <div data-testid="app-bar" className="tw-w-full tw-bg-white">
       <div

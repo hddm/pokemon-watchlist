@@ -7,7 +7,7 @@ interface PaginationProps {
   itemName?: string
 }
 
-export function Pagination(props: PaginationProps) {
+export default function Pagination(props: PaginationProps) {
   const prevBtnDisabled = props.start <= 1
   const nextBtnDisabled = props.end >= props.total
   return (

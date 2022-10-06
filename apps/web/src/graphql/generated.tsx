@@ -3552,6 +3552,13 @@ export enum TypesEnum {
   Water = 'water'
 }
 
+export type GetPokemonQueryVariables = Exact<{
+  pokemon: PokemonEnum;
+}>;
+
+
+export type GetPokemonQuery = { getPokemon: { num: number, species: string, types: Array<string>, height: number, weight: number, isEggObtainable: boolean, minimumHatchTime?: number | null, maximumHatchTime?: number | null, levellingRate?: string | null, sprite: string, shinySprite: string, backSprite: string, shinyBackSprite: string, smogonTier: string, smogonPage: string, serebiiPage: string, bulbapediaPage: string, abilities: { first: string, second?: string | null, hidden?: string | null }, baseStats: { hp: number, attack: number, defense: number, specialattack: number, specialdefense: number, speed: number }, gender: { male: string, female: string }, flavorTexts: Array<{ game: string, flavor: string }>, evYields: { hp: number, attack: number, defense: number, specialattack: number, specialdefense: number, speed: number } } };
+
 export type GetAllPokemonSpeciesQueryVariables = Exact<{
   offset?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
@@ -3561,6 +3568,86 @@ export type GetAllPokemonSpeciesQueryVariables = Exact<{
 export type GetAllPokemonSpeciesQuery = { getAllPokemonSpecies: Array<string> };
 
 
+export const GetPokemonDocument = gql`
+    query GetPokemon($pokemon: PokemonEnum!) {
+  getPokemon(pokemon: $pokemon, reverseFlavorTexts: true, takeFlavorTexts: 1) {
+    num
+    species
+    types
+    abilities {
+      first
+      second
+      hidden
+    }
+    baseStats {
+      hp
+      attack
+      defense
+      specialattack
+      specialdefense
+      speed
+    }
+    gender {
+      male
+      female
+    }
+    height
+    weight
+    flavorTexts {
+      game
+      flavor
+    }
+    evYields {
+      hp
+      attack
+      defense
+      specialattack
+      specialdefense
+      speed
+    }
+    isEggObtainable
+    minimumHatchTime
+    maximumHatchTime
+    levellingRate
+    sprite
+    shinySprite
+    backSprite
+    shinyBackSprite
+    smogonTier
+    smogonPage
+    serebiiPage
+    bulbapediaPage
+  }
+}
+    `;
+
+/**
+ * __useGetPokemonQuery__
+ *
+ * To run a query within a React component, call `useGetPokemonQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPokemonQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPokemonQuery({
+ *   variables: {
+ *      pokemon: // value for 'pokemon'
+ *   },
+ * });
+ */
+export function useGetPokemonQuery(baseOptions: Apollo.QueryHookOptions<GetPokemonQuery, GetPokemonQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPokemonQuery, GetPokemonQueryVariables>(GetPokemonDocument, options);
+      }
+export function useGetPokemonLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPokemonQuery, GetPokemonQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPokemonQuery, GetPokemonQueryVariables>(GetPokemonDocument, options);
+        }
+export type GetPokemonQueryHookResult = ReturnType<typeof useGetPokemonQuery>;
+export type GetPokemonLazyQueryHookResult = ReturnType<typeof useGetPokemonLazyQuery>;
+export type GetPokemonQueryResult = Apollo.QueryResult<GetPokemonQuery, GetPokemonQueryVariables>;
 export const GetAllPokemonSpeciesDocument = gql`
     query GetAllPokemonSpecies($offset: Int, $take: Int) {
   getAllPokemonSpecies(offset: $offset, take: $take)
