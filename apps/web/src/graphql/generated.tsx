@@ -3552,41 +3552,46 @@ export enum TypesEnum {
   Water = 'water'
 }
 
-export type GetPokemonSpeciesQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetAllPokemonSpeciesQueryVariables = Exact<{
+  offset?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+}>;
 
 
-export type GetPokemonSpeciesQuery = { getAllPokemonSpecies: Array<string> };
+export type GetAllPokemonSpeciesQuery = { getAllPokemonSpecies: Array<string> };
 
 
-export const GetPokemonSpeciesDocument = gql`
-    query GetPokemonSpecies {
-  getAllPokemonSpecies(offset: 0, take: 100)
+export const GetAllPokemonSpeciesDocument = gql`
+    query GetAllPokemonSpecies($offset: Int, $take: Int) {
+  getAllPokemonSpecies(offset: $offset, take: $take)
 }
     `;
 
 /**
- * __useGetPokemonSpeciesQuery__
+ * __useGetAllPokemonSpeciesQuery__
  *
- * To run a query within a React component, call `useGetPokemonSpeciesQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetPokemonSpeciesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetAllPokemonSpeciesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllPokemonSpeciesQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetPokemonSpeciesQuery({
+ * const { data, loading, error } = useGetAllPokemonSpeciesQuery({
  *   variables: {
+ *      offset: // value for 'offset'
+ *      take: // value for 'take'
  *   },
  * });
  */
-export function useGetPokemonSpeciesQuery(baseOptions?: Apollo.QueryHookOptions<GetPokemonSpeciesQuery, GetPokemonSpeciesQueryVariables>) {
+export function useGetAllPokemonSpeciesQuery(baseOptions?: Apollo.QueryHookOptions<GetAllPokemonSpeciesQuery, GetAllPokemonSpeciesQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetPokemonSpeciesQuery, GetPokemonSpeciesQueryVariables>(GetPokemonSpeciesDocument, options);
+        return Apollo.useQuery<GetAllPokemonSpeciesQuery, GetAllPokemonSpeciesQueryVariables>(GetAllPokemonSpeciesDocument, options);
       }
-export function useGetPokemonSpeciesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPokemonSpeciesQuery, GetPokemonSpeciesQueryVariables>) {
+export function useGetAllPokemonSpeciesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllPokemonSpeciesQuery, GetAllPokemonSpeciesQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetPokemonSpeciesQuery, GetPokemonSpeciesQueryVariables>(GetPokemonSpeciesDocument, options);
+          return Apollo.useLazyQuery<GetAllPokemonSpeciesQuery, GetAllPokemonSpeciesQueryVariables>(GetAllPokemonSpeciesDocument, options);
         }
-export type GetPokemonSpeciesQueryHookResult = ReturnType<typeof useGetPokemonSpeciesQuery>;
-export type GetPokemonSpeciesLazyQueryHookResult = ReturnType<typeof useGetPokemonSpeciesLazyQuery>;
-export type GetPokemonSpeciesQueryResult = Apollo.QueryResult<GetPokemonSpeciesQuery, GetPokemonSpeciesQueryVariables>;
+export type GetAllPokemonSpeciesQueryHookResult = ReturnType<typeof useGetAllPokemonSpeciesQuery>;
+export type GetAllPokemonSpeciesLazyQueryHookResult = ReturnType<typeof useGetAllPokemonSpeciesLazyQuery>;
+export type GetAllPokemonSpeciesQueryResult = Apollo.QueryResult<GetAllPokemonSpeciesQuery, GetAllPokemonSpeciesQueryVariables>;

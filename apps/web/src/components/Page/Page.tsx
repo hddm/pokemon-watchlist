@@ -14,7 +14,7 @@ export function Page(props: PropsWithChildren<PageProps>): ReactElement {
   return (
     <div
       data-testid="page"
-      className="tw-flex tw-min-h-screen tw-w-screen tw-flex-col"
+      className="tw-flex tw-min-h-screen tw-w-screen tw-flex-col tw-px-4 sm:tw-px-6 lg:tw-px-8"
     >
       {title && (
         <Helmet>
