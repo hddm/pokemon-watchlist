@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react'
 
 import {
   ApolloClient,
@@ -7,10 +7,9 @@ import {
   createHttpLink,
 } from '@apollo/client'
 
-
 export const client = new ApolloClient({
   link: createHttpLink({
-    uri: "https://graphqlpokemon.favware.tech/",
+    uri: 'https://graphqlpokemon.favware.tech/',
   }),
   cache: new InMemoryCache({ addTypename: false }),
 })
