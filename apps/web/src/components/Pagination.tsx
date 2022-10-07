@@ -24,7 +24,7 @@ export default function Pagination(props: PaginationProps) {
         </p>
       </div>
       <div className="tw-flex tw-flex-1 tw-justify-between sm:tw-justify-end">
-        <a
+        <button
           onClick={
             prevBtnDisabled
               ? (event) => event.preventDefault()
@@ -32,13 +32,13 @@ export default function Pagination(props: PaginationProps) {
           }
           className={`${
             prevBtnDisabled
-              ? 'tw-text-gray-300 pointer-events-none'
+              ? 'tw-text-gray-300 tw-pointer-events-none'
               : 'tw-text-gray-700 hover:tw-bg-gray-50'
           } tw-relative tw-inline-flex tw-items-center tw-rounded-md tw-border tw-border-gray-300 tw-bg-white tw-px-4 tw-py-2 tw-text-sm tw-font-medium`}
         >
           Previous
-        </a>
-        <a
+        </button>
+        <button
           onClick={
             nextBtnDisabled
               ? (event) => event.preventDefault()
@@ -46,12 +46,12 @@ export default function Pagination(props: PaginationProps) {
           }
           className={`${
             nextBtnDisabled
-              ? 'tw-text-gray-300 pointer-events-none'
+              ? 'tw-text-gray-300 tw-pointer-events-none'
               : 'tw-text-gray-700 hover:tw-bg-gray-50'
           } tw-relative tw-ml-3 tw-inline-flex tw-items-center tw-rounded-md tw-border tw-border-gray-300 tw-bg-white tw-px-4 tw-py-2 tw-text-sm tw-font-medium`}
         >
           Next
-        </a>
+        </button>
       </div>
     </nav>
   )

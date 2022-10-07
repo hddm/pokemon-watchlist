@@ -1,9 +1,22 @@
-import Layout from '@/components/Layout'
-import Link from 'next/link'
-import Pagination from '@/components/Pagination'
-import { paginate } from '@/utils/paginate'
-import { ReactElement, useState } from 'react'
-import { useGetAllPokemonSpeciesQuery } from '@/graphql/generated'
+import Layout from '@/components/Layout';
+import Link from 'next/link';
+import Pagination from '@/components/Pagination';
+import { paginate } from '@/utils/paginate';
+import { ReactElement, useState } from 'react';
+import { useEffect } from 'react';
+import { useGetAllPokemonSpeciesQuery } from '@/graphql/generated';
+
+const PAGE_KEY = 'pk_current_page'
+
+const getPageNumberFromLocalStorage = () => {
+  if (
+    window.localStorage &&
+    parseInt(window.localStorage.getItem(PAGE_KEY)) > 0
+  ) {
+    return parseInt(localStorage.getItem(PAGE_KEY))
+  }
+  return 1
+}
 
 export default function HomePage(): ReactElement {
   const { data, loading } = useGetAllPokemonSpeciesQuery({
@@ -11,6 +24,14 @@ export default function HomePage(): ReactElement {
   })
 
   const [currentPage, setCurrentPage] = useState(1)
+
+  useEffect(() => {
+    setCurrentPage(getPageNumberFromLocalStorage())
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem(PAGE_KEY, JSON.stringify(currentPage))
+  }, [currentPage])
 
   let paginatedItems = null
   if (!loading) {
@@ -21,11 +42,11 @@ export default function HomePage(): ReactElement {
   }
 
   const onPrevClick = () => {
-    setCurrentPage((prev) => prev - 1)
+    setCurrentPage((page) => page - 1)
   }
 
   const onNextClick = () => {
-    setCurrentPage((prev) => prev + 1)
+    setCurrentPage((page) => page + 1)
   }
 
   return (
@@ -36,7 +57,7 @@ export default function HomePage(): ReactElement {
         <>
           <div className="sm:tw-grid-cols-2 tw-grid tw-grid-cols-1 tw-gap-4">
             {paginatedItems.items.map((species) => (
-              <Link href={`/pokemons/${species}`}>
+              <Link key={species} href={`/pokemons/${species}`.toLowerCase()}>
                 <a
                   key={species}
                   className="focus-within:tw-ring-2 focus-within:tw-ring-indigo-500 focus-within:tw-ring-offset-2
