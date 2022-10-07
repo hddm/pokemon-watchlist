@@ -1,7 +1,7 @@
-import AppBar from '@/components/AppBar';
-import { APP_NAME } from '@/constants';
-import { Helmet } from 'react-helmet';
-import { PropsWithChildren, ReactElement, ReactNode } from 'react';
+import AppBar from '@/components/AppBar'
+import { APP_NAME } from '@/constants'
+import { Helmet } from 'react-helmet'
+import { PropsWithChildren, ReactElement, ReactNode } from 'react'
 
 interface PageProps {
   appBar?: ReactNode

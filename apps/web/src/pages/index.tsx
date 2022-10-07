@@ -1,10 +1,10 @@
-import Layout from '@/components/Layout';
-import Link from 'next/link';
-import Pagination from '@/components/Pagination';
-import { paginate } from '@/utils/paginate';
-import { ReactElement, useState } from 'react';
-import { useEffect } from 'react';
-import { useGetAllPokemonSpeciesQuery } from '@/graphql/generated';
+import Layout from '@/components/Layout'
+import Link from 'next/link'
+import Pagination from '@/components/Pagination'
+import { paginate } from '@/utils/paginate'
+import { ReactElement, useState } from 'react'
+import { useEffect } from 'react'
+import { useGetAllPokemonSpeciesQuery } from '@/graphql/generated'
 
 const PAGE_KEY = 'pk_current_page'
 

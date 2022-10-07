@@ -1,8 +1,8 @@
-import ArrowTopRightOnSquareIcon from '@heroicons/react/24/outline/ArrowTopRightOnSquareIcon';
-import Image from 'next/image';
-import Layout from '@/components/Layout';
-import { PokemonEnum, useGetPokemonQuery } from '@/graphql/generated';
-import { useRouter } from 'next/router';
+import ArrowTopRightOnSquareIcon from '@heroicons/react/24/outline/ArrowTopRightOnSquareIcon'
+import Image from 'next/image'
+import Layout from '@/components/Layout'
+import { PokemonEnum, useGetPokemonQuery } from '@/graphql/generated'
+import { useRouter } from 'next/router'
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
