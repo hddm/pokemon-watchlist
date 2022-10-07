@@ -1,7 +1,8 @@
 import Layout from '@/components/Layout'
 import Link from 'next/link'
 import Pagination from '@/components/Pagination'
-import { paginate } from '@/utils/paginate'
+import Search from '@/components/Search'
+import { PageData, paginate } from '@/utils/paginate'
 import { ReactElement, useEffect, useState } from 'react'
 import { useGetAllPokemonSpeciesQuery } from '@/graphql/generated'
 
@@ -23,6 +24,19 @@ export default function HomePage(): ReactElement {
   })
 
   const [currentPage, setCurrentPage] = useState(1)
+  const [searchField, setSearchField] = useState('')
+  const [paginatedItems, setPaginatedItems] = useState<PageData<string>>({
+    previousPage: 1,
+    nextPage: 1,
+    start: 1,
+    total: 1,
+    end: 1,
+    totalPages: 1,
+    items: [],
+  })
+  const [filteredPaginatedItems, setFilteredPaginatedItems] =
+    useState<PageData<string>>(paginatedItems)
+  const [filteredItems, setFilteredItems] = useState(null)
 
   useEffect(() => {
     setCurrentPage(getPageNumberFromLocalStorage())
@@ -32,13 +46,12 @@ export default function HomePage(): ReactElement {
     window.localStorage.setItem(PAGE_KEY, JSON.stringify(currentPage))
   }, [currentPage])
 
-  let paginatedItems = null
-  if (!loading) {
-    paginatedItems = paginate({
-      items: data.getAllPokemonSpecies,
-      page: currentPage,
-    })
-  }
+  useEffect(() => {
+    if (data) {
+      const sortedData = [...data.getAllPokemonSpecies].sort()
+      setPaginatedItems(paginate(sortedData, currentPage))
+    }
+  }, [data, currentPage])
 
   const onPrevClick = () => {
     setCurrentPage((page) => page - 1)
@@ -48,14 +61,38 @@ export default function HomePage(): ReactElement {
     setCurrentPage((page) => page + 1)
   }
 
+  useEffect(() => {
+    if (data) {
+      const sortedData = [...data.getAllPokemonSpecies].sort()
+      const newFilteredItems = sortedData.filter((item) => {
+        return item.toLocaleLowerCase().includes(searchField)
+      })
+      setFilteredItems(newFilteredItems)
+    }
+  }, [data, searchField])
+
+  useEffect(() => {
+    if (filteredItems) {
+      setFilteredPaginatedItems(paginate(filteredItems, currentPage))
+    }
+  }, [filteredItems, currentPage])
+
+  const onSearchChange = (event) => {
+    const searchFieldString = event.target.value.toLocaleLowerCase()
+    setSearchField(searchFieldString)
+  }
+
   return (
     <Layout title="Home">
       {loading ? (
         <div>Loading...</div>
       ) : (
         <>
+          <div className="tw-py-8">
+            <Search onChangeHandler={onSearchChange} />
+          </div>
           <div className="sm:tw-grid-cols-2 tw-grid tw-grid-cols-1 tw-gap-4">
-            {paginatedItems.items.map((species) => (
+            {filteredPaginatedItems.items.map((species) => (
               <Link key={species} href={`/pokemons/${species}`.toLowerCase()}>
                 <a
                   key={species}
@@ -72,9 +109,9 @@ export default function HomePage(): ReactElement {
           </div>
           <div className="tw-py-8">
             <Pagination
-              start={paginatedItems.start}
-              end={paginatedItems.end}
-              total={paginatedItems.total}
+              start={filteredPaginatedItems.start}
+              end={filteredPaginatedItems.end}
+              total={filteredPaginatedItems.total}
               onPrevClick={onPrevClick}
               onNextClick={onNextClick}
               itemName="Pokemon species"
