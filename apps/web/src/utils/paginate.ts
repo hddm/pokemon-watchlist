@@ -9,10 +9,10 @@ export interface PageData<T> {
 }
 
 export function paginate<T>(items: T[], page = 1, perPage = 10): PageData<T> {
-  const offset = perPage * (page - 1)
+  const totalPages = Math.ceil(items.length / perPage)
+  const offset = items.length > perPage ? perPage * (page - 1) : 0
   const start = offset + 1
   const total = items.length
-  const totalPages = Math.ceil(items.length / perPage)
   const paginatedItems = items.slice(offset, perPage * page)
 
   return {

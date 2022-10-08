@@ -80,6 +80,7 @@ export default function HomePage(): ReactElement {
   const onSearchChange = (event) => {
     const searchFieldString = event.target.value.toLocaleLowerCase()
     setSearchField(searchFieldString)
+    setCurrentPage(1)
   }
 
   return (
