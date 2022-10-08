@@ -1,13 +1,11 @@
 import React from 'react'
 import { GraphQLProvider } from '@/graphql'
-import { MockedProvider, MockedResponse } from '@apollo/client/testing'
-import { render } from '@testing-library/react'
+import { render, RenderOptions } from '@testing-library/react'
 
-export type Options = Parameters<typeof render>[1] & {
-  graphql?: MockedResponse[]
-}
-
-const customRender = (ui: React.ReactElement, options: Options = {}) => {
+const customRender = (
+  ui: React.ReactElement,
+  options?: Omit<RenderOptions, 'wrapper'>,
+) => {
   return render(ui, {
     wrapper: ({ children }) => <GraphQLProvider>{children}</GraphQLProvider>,
     ...options,
