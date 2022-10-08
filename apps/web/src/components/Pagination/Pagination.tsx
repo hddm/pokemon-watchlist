@@ -7,24 +7,35 @@ interface PaginationProps {
   itemName?: string
 }
 
-export default function Pagination(props: PaginationProps) {
+export function Pagination(props: PaginationProps) {
   const prevBtnDisabled = props.start <= 1
   const nextBtnDisabled = props.end >= props.total
   return (
     <nav
+      data-testid="pagination"
       className="tw-flex tw-items-center tw-justify-between tw-border-t tw-border-gray-200 tw-bg-white tw-px-4 tw-py-3 sm:tw-px-6"
       aria-label="Pagination"
     >
       <div className="tw-hidden sm:tw-block">
         <p className="tw-text-sm tw-text-gray-700">
-          Showing <span className="tw-font-medium">{props.start}</span> to{' '}
-          <span className="tw-font-medium">{props.end}</span> of{' '}
-          <span className="tw-font-medium">{props.total}</span>{' '}
+          Showing{' '}
+          <span data-testid="pagination-start" className="tw-font-medium">
+            {props.start}
+          </span>{' '}
+          to{' '}
+          <span data-testid="pagination-end" className="tw-font-medium">
+            {props.end}
+          </span>{' '}
+          of{' '}
+          <span data-testid="pagination-total" className="tw-font-medium">
+            {props.total}
+          </span>{' '}
           {props.itemName ? props.itemName : 'results'}
         </p>
       </div>
       <div className="tw-flex tw-flex-1 tw-justify-between sm:tw-justify-end">
         <button
+          data-testid="pagination-prev-btn"
           onClick={
             prevBtnDisabled
               ? (event) => event.preventDefault()
@@ -39,6 +50,7 @@ export default function Pagination(props: PaginationProps) {
           Previous
         </button>
         <button
+          data-testid="pagination-next-btn"
           onClick={
             nextBtnDisabled
               ? (event) => event.preventDefault()

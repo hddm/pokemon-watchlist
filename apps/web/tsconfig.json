@@ -1,10 +1,12 @@
 {
   "extends": "tsconfig/nextjs.json",
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["src", "__mocks__"],
   "exclude": ["node_modules"],
   "compilerOptions": {
+    "types": ["vitest/globals"],
     "paths": {
       "@/*": ["./src/*"]
     }
-  }
+  },
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

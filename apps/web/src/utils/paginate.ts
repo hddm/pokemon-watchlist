@@ -16,7 +16,7 @@ export function paginate<T>(items: T[], page = 1, perPage = 10): PageData<T> {
   const paginatedItems = items.slice(offset, perPage * page)
 
   return {
-    previousPage: page - 1 ? page - 1 : null,
+    previousPage: page > 1 ? page - 1 : null,
     nextPage: totalPages > page ? page + 1 : null,
     start: items.length > 0 ? offset + 1 : 0,
     total: items.length,

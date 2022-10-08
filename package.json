@@ -5,6 +5,8 @@
     "packages/*"
   ],
   "scripts": {
+    "test": "turbo run test",
+    "test:watch": "turbo run test:watch",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
