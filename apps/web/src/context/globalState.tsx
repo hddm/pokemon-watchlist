@@ -1,7 +1,7 @@
 import { PokemonEnum } from '@/graphql/generated'
 import { WATCH_LIST_KEY } from '@/constants'
-import { WatchListAction } from '/actions'
-import { watchListReducer } from './reducers'
+import { WatchListAction } from '@/context/actions'
+import { watchListReducer } from '@/context/reducers'
 import React, {
   createContext,
   PropsWithChildren,
