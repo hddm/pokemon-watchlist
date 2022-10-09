@@ -7,7 +7,7 @@ function setup() {
   return { ...utils }
 }
 describe('<HomePage>', () => {
-  it('renders the page successfull after multiple next clicks', async () => {
+  it('renders the page successfull after clicking on next', async () => {
     const { getByText, getByTestId } = setup()
     expect(getByText('Loading...'))
     expect(await screen.findByText('Argalis'))

@@ -2,7 +2,6 @@ import ArrowTopRightOnSquareIcon from '@heroicons/react/24/outline/ArrowTopRight
 import Image from 'next/image'
 import Layout from '@/components/Layout'
 import { PokemonEnum, useGetPokemonQuery } from '@/graphql/generated'
-import { species } from '../../graphql'
 import { useRouter } from 'next/router'
 
 function capitalizeFirstLetter(string) {

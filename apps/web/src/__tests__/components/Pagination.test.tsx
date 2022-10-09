@@ -1,4 +1,4 @@
-import { Pagination } from '../../components/Pagination'
+import { Pagination } from '@/components/Pagination'
 import { render } from '@/test/utils'
 
 describe('<Pagination}>', () => {

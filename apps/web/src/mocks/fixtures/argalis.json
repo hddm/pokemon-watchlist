@@ -1,0 +1,48 @@
+{
+  "getPokemon": {
+    "num": -26,
+    "species": "argalis",
+    "baseSpecies": null,
+    "types": ["Bug", "Psychic"],
+    "abilities": {
+      "first": "Shed Skin",
+      "second": "Compound Eyes",
+      "hidden": "Overcoat"
+    },
+    "baseStats": {
+      "hp": 60,
+      "attack": 90,
+      "defense": 89,
+      "specialattack": 87,
+      "specialdefense": 40,
+      "speed": 54
+    },
+    "gender": {
+      "male": "50%",
+      "female": "50%"
+    },
+    "height": 1.3,
+    "weight": 341.4,
+    "flavorTexts": [],
+    "evYields": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0,
+      "specialattack": 0,
+      "specialdefense": 0,
+      "speed": 0
+    },
+    "isEggObtainable": false,
+    "minimumHatchTime": null,
+    "maximumHatchTime": null,
+    "levellingRate": null,
+    "sprite": "https://play.pokemonshowdown.com/sprites/gen5/argalis.png",
+    "shinySprite": "https://play.pokemonshowdown.com/sprites/gen5-shiny/argalis.png",
+    "backSprite": "https://play.pokemonshowdown.com/sprites/gen5-back/argalis.png",
+    "shinyBackSprite": "https://play.pokemonshowdown.com/sprites/gen5-back-shiny/argalis.png",
+    "smogonTier": "CAP",
+    "smogonPage": "",
+    "serebiiPage": "",
+    "bulbapediaPage": ""
+  }
+}

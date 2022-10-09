@@ -1,4 +1,4 @@
-import GetAllPokemonSpeciesHandler from '@/mocks/handlers/GetAllPokemonSpeciesHandler'
+import handlers from './handlers'
 import { setupServer } from 'msw/node'
 
-export const server = setupServer(...GetAllPokemonSpeciesHandler)
+export const server = setupServer(...handlers)
