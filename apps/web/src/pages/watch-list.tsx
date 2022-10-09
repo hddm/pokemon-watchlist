@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { AppContext } from '@/context/globalState'
 import { useContext } from 'react'
 
-export default function watchList() {
+export default function WatchList() {
   const { state } = useContext(AppContext)
   return (
     <Layout>
