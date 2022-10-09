@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     colors: {
       indigo: colors.indigo,
+      yellow: colors.yellow,
       gray: colors.gray,
     }
   },

@@ -1,7 +1,10 @@
 import ArrowTopRightOnSquareIcon from '@heroicons/react/24/outline/ArrowTopRightOnSquareIcon'
 import Image from 'next/image'
 import Layout from '@/components/Layout'
+import WatchListButton from '@/components/WatchListButton'
+import { AppContext } from '@/context/globalState'
 import { PokemonEnum, useGetPokemonQuery } from '@/graphql/generated'
+import { useContext } from 'react'
 import { useRouter } from 'next/router'
 
 function capitalizeFirstLetter(string) {
@@ -45,82 +48,104 @@ export default function Pokemon() {
 
   const { data, loading } = useGetPokemonQuery({
     variables: { pokemon: PokemonEnum[pokemonKey as keyof typeof PokemonEnum] },
+    skip: !pokemonKey,
   })
+
+  const { state, dispatch } = useContext(AppContext)
+
+  const savedToWatchList = state.watchList.includes(pokemonKey)
+
+  const onWatchListButtonClick = () => {
+    dispatch({
+      type: savedToWatchList ? 'REMOVE_FROM_WATCH_LIST' : 'ADD_TO_WATCH_LIST',
+      pokemon: pokemonKey,
+    })
+  }
 
   return (
     <Layout>
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div className="tw-overflow-hidden tw-bg-white tw-shadow sm:tw-rounded-lg">
-          <div className="tw-px-4 tw-py-5 sm:tw-px-6 tw-mx-auto">
-            <h1 className="tw-text-center">
-              {capitalizeFirstLetter(data.getPokemon.species)}
-            </h1>
-          </div>
-          <div className="tw-px-4 tw-py-5 sm:tw-px-6">
-            <div className="tw-mt-1 tw-max-w-2xl tw-mx-auto">
-              <div className="tw-text-center">
-                <Image
-                  src={data.getPokemon.sprite}
-                  width="100"
-                  height="100"
-                  alt=""
-                ></Image>
+        data && (
+          <div>
+            <div className="tw-overflow-hidden tw-bg-white tw-shadow sm:tw-rounded-lg">
+              <div className="tw-px-4 tw-py-5 sm:tw-px-6 tw-mx-auto">
+                <h1 className="tw-text-center">
+                  {capitalizeFirstLetter(data.getPokemon.species)}
+                </h1>
+              </div>
+              <div className="tw-px-4 tw-py-5 sm:tw-px-6">
+                <div className="tw-mt-1 tw-max-w-2xl tw-mx-auto">
+                  <div className="tw-text-center">
+                    <Image
+                      src={data.getPokemon.sprite}
+                      width="100"
+                      height="100"
+                      alt=""
+                    ></Image>
+                  </div>
+                </div>
+              </div>
+              <div className="tw-border-t tw-border-gray-200 tw-px-4 tw-py-5 sm:tw-p-0">
+                <dl className="sm:tw-divide-y sm:tw-divide-gray-200">
+                  <PokemonAttribute>
+                    <DescriptionTerm>Species</DescriptionTerm>
+                    <DescriptionDetails>
+                      {data.getPokemon.baseSpecies
+                        ? data.getPokemon.baseSpecies
+                        : capitalizeFirstLetter(data.getPokemon.species)}
+                    </DescriptionDetails>
+                  </PokemonAttribute>
+                  <PokemonAttribute>
+                    <DescriptionTerm>Levelling Rate</DescriptionTerm>
+                    <DescriptionDetails>
+                      {data.getPokemon.levellingRate}
+                    </DescriptionDetails>
+                  </PokemonAttribute>
+                  <PokemonAttribute>
+                    <DescriptionTerm>Flavor Texts</DescriptionTerm>
+                    <DescriptionDetails>
+                      <ul className="tw-list-disc">
+                        {data.getPokemon.flavorTexts.map((flavorText) => (
+                          <li key={flavorText.game}>
+                            <span className="tw-font-bold tw-text-gray-900">
+                              {flavorText.game}
+                            </span>
+                            : {flavorText.flavor}
+                          </li>
+                        ))}
+                      </ul>
+                    </DescriptionDetails>
+                  </PokemonAttribute>
+                  <PokemonAttribute>
+                    <DescriptionTerm>Gender</DescriptionTerm>
+                    <DescriptionDetails>
+                      <ul>
+                        <li>Male: {data.getPokemon.gender.male}</li>
+                        <li>Female: {data.getPokemon.gender.male}</li>
+                      </ul>
+                    </DescriptionDetails>
+                  </PokemonAttribute>
+                  <PokemonAttribute>
+                    <DescriptionTerm>Bulbapedia Page</DescriptionTerm>
+                    <DescriptionDetails>
+                      <a href={data.getPokemon.bulbapediaPage}>
+                        <ArrowTopRightOnSquareIcon className="tw-h-6 tw-w-6 tw-text-blue-500" />
+                      </a>
+                    </DescriptionDetails>
+                  </PokemonAttribute>
+                </dl>
               </div>
             </div>
+            <div className="tw-flex tw-items-center tw-justify-end tw-py-6">
+              <WatchListButton
+                savedToWatchList={savedToWatchList}
+                onClick={onWatchListButtonClick}
+              ></WatchListButton>
+            </div>
           </div>
-          <div className="tw-border-t tw-border-gray-200 tw-px-4 tw-py-5 sm:tw-p-0">
-            <dl className="sm:tw-divide-y sm:tw-divide-gray-200">
-              <PokemonAttribute>
-                <DescriptionTerm>Species</DescriptionTerm>
-                <DescriptionDetails>
-                  {data.getPokemon.baseSpecies
-                    ? data.getPokemon.baseSpecies
-                    : capitalizeFirstLetter(data.getPokemon.species)}
-                </DescriptionDetails>
-              </PokemonAttribute>
-              <PokemonAttribute>
-                <DescriptionTerm>Levelling Rate</DescriptionTerm>
-                <DescriptionDetails>
-                  {data.getPokemon.levellingRate}
-                </DescriptionDetails>
-              </PokemonAttribute>
-              <PokemonAttribute>
-                <DescriptionTerm>Flavor Texts</DescriptionTerm>
-                <DescriptionDetails>
-                  <ul className="tw-list-disc">
-                    {data.getPokemon.flavorTexts.map((flavorText) => (
-                      <li key={flavorText.game}>
-                        <span className="tw-font-bold tw-text-gray-900">
-                          {flavorText.game}
-                        </span>
-                        : {flavorText.flavor}
-                      </li>
-                    ))}
-                  </ul>
-                </DescriptionDetails>
-              </PokemonAttribute>
-              <PokemonAttribute>
-                <DescriptionTerm>Gender</DescriptionTerm>
-                <DescriptionDetails>
-                  <ul>
-                    <li>Male: {data.getPokemon.gender.male}</li>
-                    <li>Female: {data.getPokemon.gender.male}</li>
-                  </ul>
-                </DescriptionDetails>
-              </PokemonAttribute>
-              <PokemonAttribute>
-                <DescriptionTerm>Bulbapedia Page</DescriptionTerm>
-                <DescriptionDetails>
-                  <a href={data.getPokemon.bulbapediaPage}>
-                    <ArrowTopRightOnSquareIcon className="tw-h-6 tw-w-6 tw-text-blue-500" />
-                  </a>
-                </DescriptionDetails>
-              </PokemonAttribute>
-            </dl>
-          </div>
-        </div>
+        )
       )}
     </Layout>
   )

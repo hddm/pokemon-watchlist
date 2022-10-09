@@ -1,4 +1,4 @@
-export default function Search(props) {
+export default function SearchBox(props) {
   return (
     <div>
       <label

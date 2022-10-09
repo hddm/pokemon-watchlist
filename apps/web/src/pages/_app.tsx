@@ -1,3 +1,4 @@
+import { AppProvider } from '@/context/globalState'
 import { GraphQLProvider } from '@/graphql'
 import '../styles/globals.css'
 import 'ui/styles.css'
@@ -7,8 +8,10 @@ import type { AppProps } from 'next/app'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <GraphQLProvider>
-      <Component {...pageProps} />
-    </GraphQLProvider>
+    <AppProvider>
+      <GraphQLProvider>
+        <Component {...pageProps} />
+      </GraphQLProvider>
+    </AppProvider>
   )
 }
