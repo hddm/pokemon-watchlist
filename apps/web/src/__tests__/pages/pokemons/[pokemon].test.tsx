@@ -1,7 +1,17 @@
-import { AppContext } from '../../../context/globalState'
-import { Mock, vi } from 'vitest'
+import { AppContext } from '@/context/globalState'
 import { render, screen, userEvent, waitFor } from '@/test/utils'
+import { vi } from 'vitest'
 import PokemonPage from '@/pages/pokemons/[pokemon]'
+
+vi.mock('next/router', () => ({
+  useRouter() {
+    return {
+      query: {
+        pokemon: 'argalis',
+      },
+    }
+  },
+}))
 
 function setup() {
   const [state, dispatch] = [{ watchList: [] }, null]
@@ -15,14 +25,6 @@ function setup() {
 
 describe('<PokemonPage>', () => {
   it('shows Argalis page successfully', async () => {
-    vi.mock('next/router', () => ({
-      useRouter() {
-        return {
-          query: 'argalis',
-        }
-      },
-    }))
-
     const { getByText, getByRole } = setup()
     expect(getByText('Loading...'))
     await waitFor(() => {

@@ -1,6 +1,6 @@
 {
   "extends": "tsconfig/nextjs.json",
-  "include": ["src", "__mocks__", "__tests__"],
+  "include": ["src"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "types": ["vitest/globals"],

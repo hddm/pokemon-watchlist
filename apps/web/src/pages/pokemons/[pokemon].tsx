@@ -37,6 +37,7 @@ function DescriptionDetails(props) {
 
 export default function Pokemon() {
   const router = useRouter()
+  console.log(router)
   const { pokemon } = router.query
 
   let pokemonKey = null
