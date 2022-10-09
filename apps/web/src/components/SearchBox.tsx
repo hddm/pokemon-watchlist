@@ -5,7 +5,7 @@ export default function SearchBox(props) {
         htmlFor="name"
         className="tw-ml-px tw-block tw-pl-4 tw-text-sm tw-font-medium tw-text-gray-700"
       >
-        Search species
+        Search Pokemon
       </label>
       <div className="tw-mt-1">
         <input
