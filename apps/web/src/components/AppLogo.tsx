@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function AppLogo() {
   return (
@@ -14,7 +15,9 @@ export default function AppLogo() {
           alt="ArchAngel"
         />
       </span>
-      <span className="tw-font-semibold">Pokemon Watchlist</span>
+      <Link href="/watch-list">
+        <a className="tw-font-semibold hover:tw-underline">Pokemon Watchlist</a>
+      </Link>
     </div>
   )
 }
