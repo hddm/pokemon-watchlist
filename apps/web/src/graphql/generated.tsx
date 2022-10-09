@@ -1,37 +1,31 @@
-import { gql } from '@apollo/client'
-import * as Apollo from '@apollo/client'
-export type Maybe<T> = T | null
-export type InputMaybe<T> = Maybe<T>
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K]
-}
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>
-}
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>
-}
-const defaultOptions = {} as const
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
+export type Maybe<T> = T | null;
+export type InputMaybe<T> = Maybe<T>;
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string
-  String: string
-  Boolean: boolean
-  Int: number
-  Float: number
-}
+  ID: string;
+  String: string;
+  Boolean: boolean;
+  Int: number;
+  Float: number;
+};
 
 /** A Pokémon's abilities entry */
 export type Abilities = {
   /** The first ability of a Pokémon */
-  first: Scalars['String']
+  first: Scalars['String'];
   /** The hidden ability of a Pokémon */
-  hidden?: Maybe<Scalars['String']>
+  hidden?: Maybe<Scalars['String']>;
   /** The second ability of a Pokémon */
-  second?: Maybe<Scalars['String']>
+  second?: Maybe<Scalars['String']>;
   /** The special ability of a Pokémon */
-  special?: Maybe<Scalars['String']>
-}
+  special?: Maybe<Scalars['String']>;
+};
 
 /** The supported abilities */
 export enum AbilitiesEnum {
@@ -305,92 +299,92 @@ export enum AbilitiesEnum {
   Wimpout = 'wimpout',
   Wonderguard = 'wonderguard',
   Wonderskin = 'wonderskin',
-  Zenmode = 'zenmode',
+  Zenmode = 'zenmode'
 }
 
 /** A single Pokémon ability entry */
 export type Ability = {
   /** Bulbapedia page for an ability */
-  bulbapediaPage: Scalars['String']
+  bulbapediaPage: Scalars['String'];
   /** The long description for an ability */
-  desc?: Maybe<Scalars['String']>
+  desc?: Maybe<Scalars['String']>;
   /** Whether this ability has effects outside of battle, and if so what the effect is */
-  isFieldAbility?: Maybe<Scalars['String']>
+  isFieldAbility?: Maybe<Scalars['String']>;
   /** The key of the ability as stored in the API */
-  key: AbilitiesEnum
+  key: AbilitiesEnum;
   /** The name for an ability */
-  name: Scalars['String']
+  name: Scalars['String'];
   /** Serebii page for an ability */
-  serebiiPage: Scalars['String']
+  serebiiPage: Scalars['String'];
   /** The short description for an ability */
-  shortDesc: Scalars['String']
+  shortDesc: Scalars['String'];
   /** Smogon page for an ability */
-  smogonPage: Scalars['String']
-}
+  smogonPage: Scalars['String'];
+};
 
 /** A Pokémon catch rate entry */
 export type CatchRate = {
   /** The base catch rate for a Pokémon that will be used to calculate the final catch rate */
-  base: Scalars['Int']
+  base: Scalars['Int'];
   /** The chance to capture a Pokémon when an ordinary Poké Ball is thrown at full health without any status condition */
-  percentageWithOrdinaryPokeballAtFullHealth: Scalars['String']
-}
+  percentageWithOrdinaryPokeballAtFullHealth: Scalars['String'];
+};
 
 /** A Pokémon's EV yields */
 export type EvYields = {
   /** The attack EV yield of a Pokémon */
-  attack: Scalars['Int']
+  attack: Scalars['Int'];
   /** The defense EV yield of a Pokémon */
-  defense: Scalars['Int']
+  defense: Scalars['Int'];
   /** The HP EV yield of a pokémon */
-  hp: Scalars['Int']
+  hp: Scalars['Int'];
   /** The special attack EV yield of a Pokémon */
-  specialattack: Scalars['Int']
+  specialattack: Scalars['Int'];
   /** The special defense EV yield of a Pokémon */
-  specialdefense: Scalars['Int']
+  specialdefense: Scalars['Int'];
   /** The speed EV yield of a Pokémon */
-  speed: Scalars['Int']
-}
+  speed: Scalars['Int'];
+};
 
 /** A flavor text entry for a Pokémon */
 export type Flavor = {
   /** The flavor text for this entry */
-  flavor: Scalars['String']
+  flavor: Scalars['String'];
   /** The name of the game this flavor text is from */
-  game: Scalars['String']
-}
+  game: Scalars['String'];
+};
 
 /** A Pokémon gender ratio entry */
 export type Gender = {
   /** The percentage for female occurrences */
-  female: Scalars['String']
+  female: Scalars['String'];
   /** The percentage of male occurrences */
-  male: Scalars['String']
-}
+  male: Scalars['String'];
+};
 
 /** A single item entry */
 export type Item = {
   /** Bulbapedia page for an item */
-  bulbapediaPage: Scalars['String']
+  bulbapediaPage: Scalars['String'];
   /** The long description for an item */
-  desc: Scalars['String']
+  desc: Scalars['String'];
   /** The generation in which this item was introduced */
-  generationIntroduced: Scalars['Int']
+  generationIntroduced: Scalars['Int'];
   /** Whether an item is non-standard, and if it is why */
-  isNonstandard?: Maybe<Scalars['String']>
+  isNonstandard?: Maybe<Scalars['String']>;
   /** The key of the item as stored in the API */
-  key: ItemsEnum
+  key: ItemsEnum;
   /** The name for an item */
-  name: Scalars['String']
+  name: Scalars['String'];
   /** Serebii page for an item */
-  serebiiPage: Scalars['String']
+  serebiiPage: Scalars['String'];
   /** The long description for an item */
-  shortDesc?: Maybe<Scalars['String']>
+  shortDesc?: Maybe<Scalars['String']>;
   /** Smogon page for an item */
-  smogonPage?: Maybe<Scalars['String']>
+  smogonPage?: Maybe<Scalars['String']>;
   /** The sprite for an item */
-  sprite: Scalars['String']
-}
+  sprite: Scalars['String'];
+};
 
 /** The supported items */
 export enum ItemsEnum {
@@ -1009,106 +1003,106 @@ export enum ItemsEnum {
   Zoomlens = 'zoomlens',
   Zpowering = 'zpowering',
   Zring = 'zring',
-  Zygardecube = 'zygardecube',
+  Zygardecube = 'zygardecube'
 }
 
 /** A learnset entry */
 export type Learnset = {
   /** The back sprite for a Pokémon. For most Pokémon this will be the animated gif, with some exceptions that were older-gen exclusive */
-  backSprite: Scalars['String']
+  backSprite: Scalars['String'];
   /** The PokéDex colour for the Pokémon */
-  color: Scalars['String']
+  color: Scalars['String'];
   /** The moves that are exclusively learned in the Unova Dream World */
-  dreamworldMoves?: Maybe<Array<LearnsetMove>>
+  dreamworldMoves?: Maybe<Array<LearnsetMove>>;
   /** The moves that can be passed as egg moves */
-  eggMoves?: Maybe<Array<LearnsetMove>>
+  eggMoves?: Maybe<Array<LearnsetMove>>;
   /** The moves that are exclusive to event variants of the Pokémon */
-  eventMoves?: Maybe<Array<LearnsetMove>>
+  eventMoves?: Maybe<Array<LearnsetMove>>;
   /** The moves that can be learned through levelling up */
-  levelUpMoves?: Maybe<Array<LearnsetLevelUpMove>>
+  levelUpMoves?: Maybe<Array<LearnsetLevelUpMove>>;
   /** The dex number for a Pokémon */
-  num: Scalars['Int']
+  num: Scalars['Int'];
   /** The key of the Pokémon as stored in the API */
-  pokemonKey: PokemonEnum
+  pokemonKey: PokemonEnum;
   /** The shiny back sprite for a Pokémon. For most Pokémon this will be the animated gif, with some exceptions that were older-gen exclusive */
-  shinyBackSprite: Scalars['String']
+  shinyBackSprite: Scalars['String'];
   /** The shiny sprite for a Pokémon. For most Pokémon this will be the animated gif, with some exceptions that were older-gen exclusive */
-  shinySprite: Scalars['String']
+  shinySprite: Scalars['String'];
   /** The species name for a Pokémon */
-  species: Scalars['String']
+  species: Scalars['String'];
   /** The sprite for a Pokémon. For most Pokémon this will be the animated gif, with some exceptions that were older-gen exclusive */
-  sprite: Scalars['String']
+  sprite: Scalars['String'];
   /** The moves that can be learned from a Technical Machine or Technical Record */
-  tmMoves?: Maybe<Array<LearnsetMove>>
+  tmMoves?: Maybe<Array<LearnsetMove>>;
   /** The moves that can be learned from a move tutor */
-  tutorMoves?: Maybe<Array<LearnsetMove>>
+  tutorMoves?: Maybe<Array<LearnsetMove>>;
   /** The moves that can be learned through virtual console transfer */
-  virtualTransferMoves?: Maybe<Array<LearnsetMove>>
-}
+  virtualTransferMoves?: Maybe<Array<LearnsetMove>>;
+};
 
 /** A learnset level up move entry */
 export type LearnsetLevelUpMove = {
   /** The generation in which this pokémon learned the move this way */
-  generation?: Maybe<Scalars['Int']>
+  generation?: Maybe<Scalars['Int']>;
   /** The level at which the move is learned */
-  level?: Maybe<Scalars['Int']>
+  level?: Maybe<Scalars['Int']>;
   /** The name of the move */
-  name?: Maybe<Scalars['String']>
-}
+  name?: Maybe<Scalars['String']>;
+};
 
 /** A learnset move entry */
 export type LearnsetMove = {
   /** The generation in which this pokémon learned the move this way */
-  generation?: Maybe<Scalars['Int']>
+  generation?: Maybe<Scalars['Int']>;
   /** The name of the move */
-  name?: Maybe<Scalars['String']>
-}
+  name?: Maybe<Scalars['String']>;
+};
 
 /** A single Pokémon move entry */
 export type Move = {
   /** The accuracy for a move */
-  accuracy: Scalars['Int']
+  accuracy: Scalars['Int'];
   /** The base power for a move */
-  basePower: Scalars['String']
+  basePower: Scalars['String'];
   /** Bulbapedia page for a move */
-  bulbapediaPage: Scalars['String']
+  bulbapediaPage: Scalars['String'];
   /** The category for a move */
-  category: Scalars['String']
+  category: Scalars['String'];
   /** The contest type for a move */
-  contestType?: Maybe<Scalars['String']>
+  contestType?: Maybe<Scalars['String']>;
   /** The long description for a move */
-  desc?: Maybe<Scalars['String']>
+  desc?: Maybe<Scalars['String']>;
   /** Whether this move can be used outside of battle, and if it can what the effect of the field move is */
-  isFieldMove?: Maybe<Scalars['String']>
+  isFieldMove?: Maybe<Scalars['String']>;
   /** Whether this move is a G-MAX move, and if it is which Gigantamaxed Pokémon can use it */
-  isGMax?: Maybe<Scalars['String']>
+  isGMax?: Maybe<Scalars['String']>;
   /** Whether a move is non-standard, and if it is why */
-  isNonstandard?: Maybe<Scalars['String']>
+  isNonstandard?: Maybe<Scalars['String']>;
   /** Whether this move is a Z-Move, and if it is the Z-Crystal required to trigger it */
-  isZ?: Maybe<Scalars['String']>
+  isZ?: Maybe<Scalars['String']>;
   /** The key of the move as stored in the API */
-  key: MovesEnum
+  key: MovesEnum;
   /** The power this move will have when used with its Max Move equivalent */
-  maxMovePower?: Maybe<Scalars['Int']>
+  maxMovePower?: Maybe<Scalars['Int']>;
   /** The name for a move */
-  name: Scalars['String']
+  name: Scalars['String'];
   /** The power points for a move */
-  pp: Scalars['Int']
+  pp: Scalars['Int'];
   /** The priority for a move */
-  priority: Scalars['Int']
+  priority: Scalars['Int'];
   /** Serebii page for a move */
-  serebiiPage: Scalars['String']
+  serebiiPage: Scalars['String'];
   /** The short description for a move */
-  shortDesc: Scalars['String']
+  shortDesc: Scalars['String'];
   /** Smogon page for a move */
-  smogonPage: Scalars['String']
+  smogonPage: Scalars['String'];
   /** The target for a move */
-  target: Scalars['String']
+  target: Scalars['String'];
   /** The type for a move */
-  type: Scalars['String']
+  type: Scalars['String'];
   /** The power this move will have when used with its Z-move equivalent */
-  zMovePower: Scalars['Int']
-}
+  zMovePower: Scalars['Int'];
+};
 
 /** The supported moves */
 export enum MovesEnum {
@@ -1995,84 +1989,84 @@ export enum MovesEnum {
   Zapcannon = 'zapcannon',
   Zenheadbutt = 'zenheadbutt',
   Zingzap = 'zingzap',
-  Zippyzap = 'zippyzap',
+  Zippyzap = 'zippyzap'
 }
 
 /** A Pokémon's entry */
 export type Pokemon = {
   /** The abilities for a Pokémon */
-  abilities: Abilities
+  abilities: Abilities;
   /** The back sprite for a Pokémon. For most Pokémon this will be the animated gif, with some exceptions that were older-gen exclusive */
-  backSprite: Scalars['String']
+  backSprite: Scalars['String'];
   /** Base form if this entry describes an alternate form */
-  baseForme?: Maybe<Scalars['String']>
+  baseForme?: Maybe<Scalars['String']>;
   /** Base species if this entry describes a special form */
-  baseSpecies?: Maybe<Scalars['String']>
+  baseSpecies?: Maybe<Scalars['String']>;
   /** Base stats for a Pokémon */
-  baseStats: Stats
+  baseStats: Stats;
   /** The total of all base stats for a Pokémon */
-  baseStatsTotal: Scalars['Int']
+  baseStatsTotal: Scalars['Int'];
   /** Bulbapedia page for a Pokémon */
-  bulbapediaPage: Scalars['String']
+  bulbapediaPage: Scalars['String'];
   /** The catch rate data for a Pokémon */
-  catchRate?: Maybe<CatchRate>
+  catchRate?: Maybe<CatchRate>;
   /** The colour of a Pokémon as listed in the Pokedex */
-  color: Scalars['String']
+  color: Scalars['String'];
   /** Any other *cosmetic* forms for a Pokémon, distinguished from other formes as cosmetic formes only change the look of the Pokémon, while other formes might also change an ability, moveset or other data. */
-  cosmeticFormes?: Maybe<Array<Scalars['String']>>
+  cosmeticFormes?: Maybe<Array<Scalars['String']>>;
   /** The egg groups a Pokémon is in */
-  eggGroups?: Maybe<Array<Scalars['String']>>
+  eggGroups?: Maybe<Array<Scalars['String']>>;
   /** EV yields for a Pokémon */
-  evYields: EvYields
+  evYields: EvYields;
   /** The evolution level, or special method, for a Pokémon */
-  evolutionLevel?: Maybe<Scalars['String']>
+  evolutionLevel?: Maybe<Scalars['String']>;
   /** The evolutions for a Pokémon, if any */
-  evolutions?: Maybe<Array<Pokemon>>
+  evolutions?: Maybe<Array<Pokemon>>;
   /** The flavor texts for a Pokémon */
-  flavorTexts: Array<Flavor>
+  flavorTexts: Array<Flavor>;
   /** The form identifier of a Pokémon */
-  forme?: Maybe<Scalars['String']>
+  forme?: Maybe<Scalars['String']>;
   /** The single letter identifier of the form */
-  formeLetter?: Maybe<Scalars['String']>
+  formeLetter?: Maybe<Scalars['String']>;
   /** The gender data for a Pokémon */
-  gender: Gender
+  gender: Gender;
   /** The height of a Pokémon in meters */
-  height: Scalars['Float']
+  height: Scalars['Float'];
   /** Whether the egg of a Pokémon is obtainable */
-  isEggObtainable: Scalars['Boolean']
+  isEggObtainable: Scalars['Boolean'];
   /** The key of the Pokémon as stored in the API */
-  key: PokemonEnum
+  key: PokemonEnum;
   /** The levelling rate of a Pokémon */
-  levellingRate?: Maybe<Scalars['String']>
+  levellingRate?: Maybe<Scalars['String']>;
   /** The maximum number of steps required for the egg of a Pokémon to hatch */
-  maximumHatchTime?: Maybe<Scalars['Int']>
+  maximumHatchTime?: Maybe<Scalars['Int']>;
   /** The minimum number of steps required for the egg of a Pokémon to hatch */
-  minimumHatchTime?: Maybe<Scalars['Int']>
+  minimumHatchTime?: Maybe<Scalars['Int']>;
   /** The dex number for a Pokémon */
-  num: Scalars['Int']
+  num: Scalars['Int'];
   /** Any other forms for a Pokémon */
-  otherFormes?: Maybe<Array<Scalars['String']>>
+  otherFormes?: Maybe<Array<Scalars['String']>>;
   /** The preevolutions for a Pokémon, if any */
-  preevolutions?: Maybe<Array<Pokemon>>
+  preevolutions?: Maybe<Array<Pokemon>>;
   /** Serebii page for a Pokémon */
-  serebiiPage: Scalars['String']
+  serebiiPage: Scalars['String'];
   /** The shiny back sprite for a Pokémon. For most Pokémon this will be the animated gif, with some exceptions that were older-gen exclusive */
-  shinyBackSprite: Scalars['String']
+  shinyBackSprite: Scalars['String'];
   /** The shiny sprite for a Pokémon. For most Pokémon this will be the animated gif, with some exceptions that were older-gen exclusive */
-  shinySprite: Scalars['String']
+  shinySprite: Scalars['String'];
   /** Smogon page for a Pokémon */
-  smogonPage: Scalars['String']
+  smogonPage: Scalars['String'];
   /** The smogon tier a Pokémon falls under */
-  smogonTier: Scalars['String']
+  smogonTier: Scalars['String'];
   /** The species name for a Pokémon */
-  species: Scalars['String']
+  species: Scalars['String'];
   /** The sprite for a Pokémon. For most Pokémon this will be the animated gif, with some exceptions that were older-gen exclusive */
-  sprite: Scalars['String']
+  sprite: Scalars['String'];
   /** The types for a Pokémon */
-  types: Array<Scalars['String']>
+  types: Array<Scalars['String']>;
   /** The weight of a Pokémon in kilograms */
-  weight: Scalars['Float']
-}
+  weight: Scalars['Float'];
+};
 
 /** The supported Pokémon */
 export enum PokemonEnum {
@@ -3347,181 +3341,194 @@ export enum PokemonEnum {
   Zweilous = 'zweilous',
   Zygarde = 'zygarde',
   Zygarde10 = 'zygarde10',
-  Zygardecomplete = 'zygardecomplete',
+  Zygardecomplete = 'zygardecomplete'
 }
 
 export type Query = {
   /** Gets the details on a Pokémon ability, using the ability name */
-  getAbility: Ability
+  getAbility: Ability;
   /** Returns a list of all the known Pokémon. This query supports no arguments can it be  */
-  getAllPokemonSpecies: Array<Scalars['String']>
+  getAllPokemonSpecies: Array<Scalars['String']>;
   /**
    * Gets details on a Pokémon ability, using a fuzzy search on name
    * This can be used to find multiple results based on the query
    * By default only 1 result is returned. You can provide the arguments "take", "offset", and "reverse" to modify this behaviour.
    */
-  getFuzzyAbility: Array<Ability>
+  getFuzzyAbility: Array<Ability>;
   /**
    * Gets details on a Pokémon item, using a fuzzy search on name
    * This can be used to find multiple results based on the query
    * By default only 1 result is returned. You can provide the arguments "take", "offset", and "reverse" to modify this behaviour.
    */
-  getFuzzyItem: Array<Item>
+  getFuzzyItem: Array<Item>;
   /** Gets the learnset for a given Pokémon and move.A fuzzy search is performed to find a matching Pokémon and moveMultiple moves are possible by putting them in an array: [move1, move2].You can also apply a generation filter (only results for the given generation will be returned) with the generation argument */
-  getFuzzyLearnset: Learnset
+  getFuzzyLearnset: Learnset;
   /**
    * Gets details on a Pokémon move, using a fuzzy search on name
    * This can be used to find multiple results based on the query
    * By default only 1 result is returned. You can provide the arguments "take", "offset", and "reverse" to modify this behaviour.
    */
-  getFuzzyMove: Array<Move>
+  getFuzzyMove: Array<Move>;
   /**
    * Gets details on one or more Pokémon based on species name
    * You can provide "take" to limit the amount of Pokémon to return (default: 1), set the offset of where to start with "offset", and reverse the entire array with "reverse".
    * You can provide "takeFlavorTexts" to limit the amount of flavour texts to return (default: 1), set the offset of where to start with "offsetFlavorTexts", and reverse the entire array with "reverseFlavorTexts".
    * Reversal is applied before pagination!
    */
-  getFuzzyPokemon: Array<Pokemon>
+  getFuzzyPokemon: Array<Pokemon>;
   /** Gets the details on a Pokémon item, using the item name */
-  getItem: Item
+  getItem: Item;
   /** Gets the learnsets for a given Pokémon and move.Multiple moves are possible by putting them in an array: [move1, move2].You can also apply a generation filter (only results for the given generation will be returned) with the generation argument */
-  getLearnset: Learnset
+  getLearnset: Learnset;
   /** Gets the details on a Pokémon move, using the move name */
-  getMove: Move
+  getMove: Move;
   /**
    * Gets details on a single Pokémon based on species name
    * You can provide "takeFlavorTexts" to limit the amount of flavour texts to return, set the offset of where to start with "offsetFlavorTexts", and reverse the entire array with "reverseFlavorTexts".
    * Reversal is applied before pagination!
    */
-  getPokemon: Pokemon
+  getPokemon: Pokemon;
   /**
    * Gets details on a single Pokémon based on National Pokédex number
    * You can provide "takeFlavorTexts" to limit the amount of flavour texts to return, set the offset of where to start with "offsetFlavorTexts", and reverse the entire array with "reverseFlavorTexts".
    * Reversal is applied before pagination!
    */
-  getPokemonByDexNumber: Pokemon
+  getPokemonByDexNumber: Pokemon;
   /** Gets the type matchup data for the given type or types */
-  getTypeMatchup: TypeMatchup
-}
+  getTypeMatchup: TypeMatchup;
+};
+
 
 export type QueryGetAbilityArgs = {
-  ability: AbilitiesEnum
-}
+  ability: AbilitiesEnum;
+};
+
 
 export type QueryGetAllPokemonSpeciesArgs = {
-  offset?: InputMaybe<Scalars['Int']>
-  reverse?: InputMaybe<Scalars['Boolean']>
-  take?: InputMaybe<Scalars['Int']>
-}
+  offset?: InputMaybe<Scalars['Int']>;
+  reverse?: InputMaybe<Scalars['Boolean']>;
+  take?: InputMaybe<Scalars['Int']>;
+};
+
 
 export type QueryGetFuzzyAbilityArgs = {
-  ability: Scalars['String']
-  offset?: InputMaybe<Scalars['Int']>
-  reverse?: InputMaybe<Scalars['Boolean']>
-  take?: InputMaybe<Scalars['Int']>
-}
+  ability: Scalars['String'];
+  offset?: InputMaybe<Scalars['Int']>;
+  reverse?: InputMaybe<Scalars['Boolean']>;
+  take?: InputMaybe<Scalars['Int']>;
+};
+
 
 export type QueryGetFuzzyItemArgs = {
-  item: Scalars['String']
-  offset?: InputMaybe<Scalars['Int']>
-  reverse?: InputMaybe<Scalars['Boolean']>
-  take?: InputMaybe<Scalars['Int']>
-}
+  item: Scalars['String'];
+  offset?: InputMaybe<Scalars['Int']>;
+  reverse?: InputMaybe<Scalars['Boolean']>;
+  take?: InputMaybe<Scalars['Int']>;
+};
+
 
 export type QueryGetFuzzyLearnsetArgs = {
-  generation?: InputMaybe<Scalars['Int']>
-  moves: Array<Scalars['String']>
-  pokemon: Scalars['String']
-}
+  generation?: InputMaybe<Scalars['Int']>;
+  moves: Array<Scalars['String']>;
+  pokemon: Scalars['String'];
+};
+
 
 export type QueryGetFuzzyMoveArgs = {
-  move: Scalars['String']
-  offset?: InputMaybe<Scalars['Int']>
-  reverse?: InputMaybe<Scalars['Boolean']>
-  take?: InputMaybe<Scalars['Int']>
-}
+  move: Scalars['String'];
+  offset?: InputMaybe<Scalars['Int']>;
+  reverse?: InputMaybe<Scalars['Boolean']>;
+  take?: InputMaybe<Scalars['Int']>;
+};
+
 
 export type QueryGetFuzzyPokemonArgs = {
-  offset?: InputMaybe<Scalars['Int']>
-  offsetFlavorTexts?: InputMaybe<Scalars['Int']>
-  pokemon: Scalars['String']
-  reverse?: InputMaybe<Scalars['Boolean']>
-  reverseFlavorTexts?: InputMaybe<Scalars['Boolean']>
-  take?: InputMaybe<Scalars['Int']>
-  takeFlavorTexts?: InputMaybe<Scalars['Int']>
-}
+  offset?: InputMaybe<Scalars['Int']>;
+  offsetFlavorTexts?: InputMaybe<Scalars['Int']>;
+  pokemon: Scalars['String'];
+  reverse?: InputMaybe<Scalars['Boolean']>;
+  reverseFlavorTexts?: InputMaybe<Scalars['Boolean']>;
+  take?: InputMaybe<Scalars['Int']>;
+  takeFlavorTexts?: InputMaybe<Scalars['Int']>;
+};
+
 
 export type QueryGetItemArgs = {
-  item: ItemsEnum
-}
+  item: ItemsEnum;
+};
+
 
 export type QueryGetLearnsetArgs = {
-  generation?: InputMaybe<Scalars['Int']>
-  moves: Array<MovesEnum>
-  pokemon: PokemonEnum
-}
+  generation?: InputMaybe<Scalars['Int']>;
+  moves: Array<MovesEnum>;
+  pokemon: PokemonEnum;
+};
+
 
 export type QueryGetMoveArgs = {
-  move: MovesEnum
-}
+  move: MovesEnum;
+};
+
 
 export type QueryGetPokemonArgs = {
-  offsetFlavorTexts?: InputMaybe<Scalars['Int']>
-  pokemon: PokemonEnum
-  reverseFlavorTexts?: InputMaybe<Scalars['Boolean']>
-  takeFlavorTexts?: InputMaybe<Scalars['Int']>
-}
+  offsetFlavorTexts?: InputMaybe<Scalars['Int']>;
+  pokemon: PokemonEnum;
+  reverseFlavorTexts?: InputMaybe<Scalars['Boolean']>;
+  takeFlavorTexts?: InputMaybe<Scalars['Int']>;
+};
+
 
 export type QueryGetPokemonByDexNumberArgs = {
-  number: Scalars['Int']
-  offsetFlavorTexts?: InputMaybe<Scalars['Int']>
-  reverseFlavorTexts?: InputMaybe<Scalars['Boolean']>
-  takeFlavorTexts?: InputMaybe<Scalars['Int']>
-}
+  number: Scalars['Int'];
+  offsetFlavorTexts?: InputMaybe<Scalars['Int']>;
+  reverseFlavorTexts?: InputMaybe<Scalars['Boolean']>;
+  takeFlavorTexts?: InputMaybe<Scalars['Int']>;
+};
+
 
 export type QueryGetTypeMatchupArgs = {
-  types: Array<TypesEnum>
-}
+  types: Array<TypesEnum>;
+};
 
 /** A Pokémon's stats */
 export type Stats = {
   /** The base attack stat of a Pokémon */
-  attack: Scalars['Int']
+  attack: Scalars['Int'];
   /** The base defense stat of a Pokémon */
-  defense: Scalars['Int']
+  defense: Scalars['Int'];
   /** The base HP stat of a pokémon */
-  hp: Scalars['Int']
+  hp: Scalars['Int'];
   /** The base special attack stat of a Pokémon */
-  specialattack: Scalars['Int']
+  specialattack: Scalars['Int'];
   /** The base special defense stat of a Pokémon */
-  specialdefense: Scalars['Int']
+  specialdefense: Scalars['Int'];
   /** The base speed stat of a Pokémon */
-  speed: Scalars['Int']
-}
+  speed: Scalars['Int'];
+};
 
 /** A type matchup entry */
 export type Type = {
   /** The types with 4x effectiveness */
-  doubleEffectiveTypes: Array<Scalars['String']>
+  doubleEffectiveTypes: Array<Scalars['String']>;
   /** The types with 0.25x effectiveness */
-  doubleResistedTypes: Array<Scalars['String']>
+  doubleResistedTypes: Array<Scalars['String']>;
   /** The types with 2x effectiveness */
-  effectiveTypes: Array<Scalars['String']>
+  effectiveTypes: Array<Scalars['String']>;
   /** The types with 0x effectiveness */
-  effectlessTypes: Array<Scalars['String']>
+  effectlessTypes: Array<Scalars['String']>;
   /** The types with 1x effectiveness */
-  normalTypes: Array<Scalars['String']>
+  normalTypes: Array<Scalars['String']>;
   /** The types with 0.5x effectiveness */
-  resistedTypes: Array<Scalars['String']>
-}
+  resistedTypes: Array<Scalars['String']>;
+};
 
 /** The type matchups for any one or two given types */
 export type TypeMatchup = {
   /** The type matchups when attacking */
-  attacking: Type
+  attacking: Type;
   /** The type matchups when defending */
-  defending: Type
-}
+  defending: Type;
+};
 
 /** The types in Pokémon */
 export enum TypesEnum {
@@ -3542,117 +3549,78 @@ export enum TypesEnum {
   Psychic = 'psychic',
   Rock = 'rock',
   Steel = 'steel',
-  Water = 'water',
+  Water = 'water'
 }
 
 export type GetPokemonQueryVariables = Exact<{
-  pokemon: PokemonEnum
-}>
+  pokemon: PokemonEnum;
+}>;
 
-export type GetPokemonQuery = {
-  getPokemon: {
-    num: number
-    species: string
-    types: Array<string>
-    height: number
-    weight: number
-    isEggObtainable: boolean
-    minimumHatchTime?: number | null
-    maximumHatchTime?: number | null
-    levellingRate?: string | null
-    sprite: string
-    shinySprite: string
-    backSprite: string
-    shinyBackSprite: string
-    smogonTier: string
-    smogonPage: string
-    serebiiPage: string
-    bulbapediaPage: string
-    abilities: { first: string; second?: string | null; hidden?: string | null }
-    baseStats: {
-      hp: number
-      attack: number
-      defense: number
-      specialattack: number
-      specialdefense: number
-      speed: number
-    }
-    gender: { male: string; female: string }
-    flavorTexts: Array<{ game: string; flavor: string }>
-    evYields: {
-      hp: number
-      attack: number
-      defense: number
-      specialattack: number
-      specialdefense: number
-      speed: number
-    }
-  }
-}
+
+export type GetPokemonQuery = { getPokemon: { num: number, species: string, baseSpecies?: string | null, types: Array<string>, height: number, weight: number, isEggObtainable: boolean, minimumHatchTime?: number | null, maximumHatchTime?: number | null, levellingRate?: string | null, sprite: string, shinySprite: string, backSprite: string, shinyBackSprite: string, smogonTier: string, smogonPage: string, serebiiPage: string, bulbapediaPage: string, abilities: { first: string, second?: string | null, hidden?: string | null }, baseStats: { hp: number, attack: number, defense: number, specialattack: number, specialdefense: number, speed: number }, gender: { male: string, female: string }, flavorTexts: Array<{ game: string, flavor: string }>, evYields: { hp: number, attack: number, defense: number, specialattack: number, specialdefense: number, speed: number } } };
 
 export type GetAllPokemonSpeciesQueryVariables = Exact<{
-  offset?: InputMaybe<Scalars['Int']>
-  take?: InputMaybe<Scalars['Int']>
-}>
+  offset?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+}>;
 
-export type GetAllPokemonSpeciesQuery = { getAllPokemonSpecies: Array<string> }
+
+export type GetAllPokemonSpeciesQuery = { getAllPokemonSpecies: Array<string> };
+
 
 export const GetPokemonDocument = gql`
-  query GetPokemon($pokemon: PokemonEnum!) {
-    getPokemon(
-      pokemon: $pokemon
-      reverseFlavorTexts: true
-      takeFlavorTexts: 1
-    ) {
-      num
-      species
-      types
-      abilities {
-        first
-        second
-        hidden
-      }
-      baseStats {
-        hp
-        attack
-        defense
-        specialattack
-        specialdefense
-        speed
-      }
-      gender {
-        male
-        female
-      }
-      height
-      weight
-      flavorTexts {
-        game
-        flavor
-      }
-      evYields {
-        hp
-        attack
-        defense
-        specialattack
-        specialdefense
-        speed
-      }
-      isEggObtainable
-      minimumHatchTime
-      maximumHatchTime
-      levellingRate
-      sprite
-      shinySprite
-      backSprite
-      shinyBackSprite
-      smogonTier
-      smogonPage
-      serebiiPage
-      bulbapediaPage
+    query GetPokemon($pokemon: PokemonEnum!) {
+  getPokemon(pokemon: $pokemon, reverseFlavorTexts: true, takeFlavorTexts: 1) {
+    num
+    species
+    baseSpecies
+    types
+    abilities {
+      first
+      second
+      hidden
     }
+    baseStats {
+      hp
+      attack
+      defense
+      specialattack
+      specialdefense
+      speed
+    }
+    gender {
+      male
+      female
+    }
+    height
+    weight
+    flavorTexts {
+      game
+      flavor
+    }
+    evYields {
+      hp
+      attack
+      defense
+      specialattack
+      specialdefense
+      speed
+    }
+    isEggObtainable
+    minimumHatchTime
+    maximumHatchTime
+    levellingRate
+    sprite
+    shinySprite
+    backSprite
+    shinyBackSprite
+    smogonTier
+    smogonPage
+    serebiiPage
+    bulbapediaPage
   }
-`
+}
+    `;
 
 /**
  * __useGetPokemonQuery__
@@ -3670,43 +3638,22 @@ export const GetPokemonDocument = gql`
  *   },
  * });
  */
-export function useGetPokemonQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    GetPokemonQuery,
-    GetPokemonQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetPokemonQuery, GetPokemonQueryVariables>(
-    GetPokemonDocument,
-    options,
-  )
-}
-export function useGetPokemonLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetPokemonQuery,
-    GetPokemonQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetPokemonQuery, GetPokemonQueryVariables>(
-    GetPokemonDocument,
-    options,
-  )
-}
-export type GetPokemonQueryHookResult = ReturnType<typeof useGetPokemonQuery>
-export type GetPokemonLazyQueryHookResult = ReturnType<
-  typeof useGetPokemonLazyQuery
->
-export type GetPokemonQueryResult = Apollo.QueryResult<
-  GetPokemonQuery,
-  GetPokemonQueryVariables
->
+export function useGetPokemonQuery(baseOptions: Apollo.QueryHookOptions<GetPokemonQuery, GetPokemonQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPokemonQuery, GetPokemonQueryVariables>(GetPokemonDocument, options);
+      }
+export function useGetPokemonLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPokemonQuery, GetPokemonQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPokemonQuery, GetPokemonQueryVariables>(GetPokemonDocument, options);
+        }
+export type GetPokemonQueryHookResult = ReturnType<typeof useGetPokemonQuery>;
+export type GetPokemonLazyQueryHookResult = ReturnType<typeof useGetPokemonLazyQuery>;
+export type GetPokemonQueryResult = Apollo.QueryResult<GetPokemonQuery, GetPokemonQueryVariables>;
 export const GetAllPokemonSpeciesDocument = gql`
-  query GetAllPokemonSpecies($offset: Int, $take: Int) {
-    getAllPokemonSpecies(offset: $offset, take: $take)
-  }
-`
+    query GetAllPokemonSpecies($offset: Int, $take: Int) {
+  getAllPokemonSpecies(offset: $offset, take: $take)
+}
+    `;
 
 /**
  * __useGetAllPokemonSpeciesQuery__
@@ -3725,37 +3672,14 @@ export const GetAllPokemonSpeciesDocument = gql`
  *   },
  * });
  */
-export function useGetAllPokemonSpeciesQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetAllPokemonSpeciesQuery,
-    GetAllPokemonSpeciesQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<
-    GetAllPokemonSpeciesQuery,
-    GetAllPokemonSpeciesQueryVariables
-  >(GetAllPokemonSpeciesDocument, options)
-}
-export function useGetAllPokemonSpeciesLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetAllPokemonSpeciesQuery,
-    GetAllPokemonSpeciesQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<
-    GetAllPokemonSpeciesQuery,
-    GetAllPokemonSpeciesQueryVariables
-  >(GetAllPokemonSpeciesDocument, options)
-}
-export type GetAllPokemonSpeciesQueryHookResult = ReturnType<
-  typeof useGetAllPokemonSpeciesQuery
->
-export type GetAllPokemonSpeciesLazyQueryHookResult = ReturnType<
-  typeof useGetAllPokemonSpeciesLazyQuery
->
-export type GetAllPokemonSpeciesQueryResult = Apollo.QueryResult<
-  GetAllPokemonSpeciesQuery,
-  GetAllPokemonSpeciesQueryVariables
->
+export function useGetAllPokemonSpeciesQuery(baseOptions?: Apollo.QueryHookOptions<GetAllPokemonSpeciesQuery, GetAllPokemonSpeciesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllPokemonSpeciesQuery, GetAllPokemonSpeciesQueryVariables>(GetAllPokemonSpeciesDocument, options);
+      }
+export function useGetAllPokemonSpeciesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllPokemonSpeciesQuery, GetAllPokemonSpeciesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllPokemonSpeciesQuery, GetAllPokemonSpeciesQueryVariables>(GetAllPokemonSpeciesDocument, options);
+        }
+export type GetAllPokemonSpeciesQueryHookResult = ReturnType<typeof useGetAllPokemonSpeciesQuery>;
+export type GetAllPokemonSpeciesLazyQueryHookResult = ReturnType<typeof useGetAllPokemonSpeciesLazyQuery>;
+export type GetAllPokemonSpeciesQueryResult = Apollo.QueryResult<GetAllPokemonSpeciesQuery, GetAllPokemonSpeciesQueryVariables>;

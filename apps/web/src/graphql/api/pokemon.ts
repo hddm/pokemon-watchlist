@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client'
+import { gql } from '@apollo/client';
 
 export const GET_POKEMON = gql`
   query GetPokemon($pokemon: PokemonEnum!) {
@@ -9,6 +9,7 @@ export const GET_POKEMON = gql`
     ) {
       num
       species
+      baseSpecies
       types
       abilities {
         first

@@ -1,5 +1,5 @@
-import species from '@/mocks/fixtures/species.json'
-import { paginate } from './paginate'
+import species from '@/mocks/fixtures/species.json';
+import { paginate } from '@/utils/paginate';
 
 describe('paginate', () => {
   it('paginate 1st page successfully', async () => {

@@ -2,6 +2,7 @@ import ArrowTopRightOnSquareIcon from '@heroicons/react/24/outline/ArrowTopRight
 import Image from 'next/image'
 import Layout from '@/components/Layout'
 import { PokemonEnum, useGetPokemonQuery } from '@/graphql/generated'
+import { species } from '../../graphql'
 import { useRouter } from 'next/router'
 
 function capitalizeFirstLetter(string) {
@@ -53,6 +54,11 @@ export default function Pokemon() {
         <div>Loading...</div>
       ) : (
         <div className="tw-overflow-hidden tw-bg-white tw-shadow sm:tw-rounded-lg">
+          <div className="tw-px-4 tw-py-5 sm:tw-px-6 tw-mx-auto">
+            <h1 className="tw-text-center">
+              {capitalizeFirstLetter(data.getPokemon.species)}
+            </h1>
+          </div>
           <div className="tw-px-4 tw-py-5 sm:tw-px-6">
             <div className="tw-mt-1 tw-max-w-2xl tw-mx-auto">
               <div className="tw-text-center">
@@ -70,7 +76,9 @@ export default function Pokemon() {
               <PokemonAttribute>
                 <DescriptionTerm>Species</DescriptionTerm>
                 <DescriptionDetails>
-                  {capitalizeFirstLetter(pokemon)}
+                  {data.getPokemon.baseSpecies
+                    ? data.getPokemon.baseSpecies
+                    : capitalizeFirstLetter(data.getPokemon.species)}
                 </DescriptionDetails>
               </PokemonAttribute>
               <PokemonAttribute>
